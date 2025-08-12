@@ -1,0 +1,51 @@
+---
+- name: Service Management Playbook
+  hosts: all
+  gather_facts: yes
+  vars:
+    email_recipient: "admin@example.com"
+    rest_api_url: "http://vm1-services:5000"
+    
+  tasks:
+    - name: Verify Install Action
+      block:
+        - name: Check if service is installed
+          command: "which {{ service_name }}"
+          register: service_check
+          failed_when: false
+          changed_when: false
+          
+        - name: Service installation status
+          debug:
+            msg: "{{ service_name }} is {{ 'installed' if service_check.rc == 0 else 'not installed' }}"
+            
+      when: action == "verify_install"
+
+    - name: Check Disk Space Action
+      block:
+        - name: Get disk usage
+          shell: "df -h / | awk 'NR==2 {print $5}' | sed 's/%//'"
+          register: disk_usage
+          
+        - name: Display disk usage
+          debug:
+            msg: "{{ inventory_hostname }}: Disk usage {{ disk_usage.stdout }}%"
+            
+        - name: Alert on high disk usage
+          debug:
+            msg: "ALERT: Disk usage on {{ inventory_hostname }} is {{ disk_usage.stdout }}% (>80%)"
+          when: disk_usage.stdout|int > 80
+            
+      when: action == "check-disk"
+
+    - name: Check Status Action
+      block:
+        - name: Check service processes
+          shell: "pgrep -f {{ service_name }} || echo 'not running'"
+          register: service_status
+          
+        - name: Report service status
+          debug:
+            msg: "{{ service_name }} on {{ inventory_hostname }}: {{ 'UP' if 'not running' not in service_status.stdout else 'DOWN' }}"
+            
+      when: action == "check-status"

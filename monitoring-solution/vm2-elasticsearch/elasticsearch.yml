@@ -1,0 +1,6 @@
+cluster.name: monitoring-cluster
+node.name: vm2-node
+network.host: 0.0.0.0
+discovery.type: single-node
+xpack.security.enabled: false
+indices.query.bool.max_clause_count: 10000

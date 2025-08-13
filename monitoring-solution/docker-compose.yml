@@ -8,6 +8,7 @@ services:
       - "80:80"
       - "5672:5672"
       - "5432:5432"
+      - "15672:15672"
     volumes:
       - ./vm1-services/output:/app/output
     environment:

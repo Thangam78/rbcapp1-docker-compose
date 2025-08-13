@@ -37,12 +37,12 @@ curl http://localhost:5000/healthcheck/rabbitmq
 docker-compose exec vm1-services ansible-playbook /app/assignment.yml -i /app/inventory_local.ini -e action=verify_install
 docker-compose exec vm1-services ansible-playbook /app/assignment.yml -i /app/inventory_local.ini -e action=check-status
 docker-compose exec vm1-services ansible-playbook /app/assignment.yml -i /app/inventory_local.ini -e action=check-disk
-
-# 9. Verify Elasticsearch
+```
+# 10. Verify Elasticsearch
 ```bash
 curl http://localhost:9200/_cluster/health
 curl http://localhost:9200/service-status/_search
 ```
 
-# 7. Test sales data filtering
+# 11. Test sales data filtering
 docker-compose exec vm1-services python3 sales-filter.py

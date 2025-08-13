@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
     curl \
+    ansible \
     erlang-nox \
     supervisor \
     && rm -rf /var/lib/apt/lists/*
@@ -18,6 +19,8 @@ RUN apt-get update && apt-get install -y \
 # Install Python packages
 COPY requirements.txt /app/
 RUN pip3 install --no-cache-dir -r /app/requirements.txt
+RUN pip install --upgrade ansible jinja2
+
 
 # Copy Supervisor config
 COPY supervisor.conf /etc/supervisor/conf.d/services.conf

@@ -3,6 +3,7 @@ services:
   vm1-services:
     build: ./vm1-services
     hostname: vm1-host
+    container_name: vm1-services
     ports:
       - "5000:5000"
       - "80:80"
@@ -21,6 +22,7 @@ services:
   vm2-elasticsearch:
     build: ./vm2-elasticsearch
     hostname: vm2-host
+    container_name: vm2-elasticsearch
     ports:
       - "9200:9200"
     environment:

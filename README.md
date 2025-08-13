@@ -3,6 +3,7 @@
 
 # 1. Clone the repo.
 https://github.com/Thangam78/rbcapp1-docker-compose.git
+cd monitoring-solution
 
 # 2. Copy all files from the artifact above
 
@@ -26,7 +27,7 @@ docker-compose exec vm1-services python3 sales-filter.py
 ```bash
 curl -X POST http://localhost:5000/add -H "Content-Type: application/json" -d '{"service_name":"apache2","service_status":"UP","host_name":"vm1-host"}'
 curl http://localhost:5000/healthcheck
-curl http://localhost:5000/healthcheck/apache2
+curl http://localhost:5000/healthcheck/apache
 curl http://localhost:5000/healthcheck/postgresql
 curl http://localhost:5000/healthcheck/rabbitmq
 ````

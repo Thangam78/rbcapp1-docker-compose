@@ -32,6 +32,11 @@ curl http://localhost:5000/healthcheck/apache
 curl http://localhost:5000/healthcheck/postgresql
 curl http://localhost:5000/healthcheck/rabbitmq
 ````
+# 9. Test ansible playbook
+```bash
+docker-compose exec vm1-services ansible-playbook /app/assignment.yml -i /app/inventory_local.ini -e action=verify_install
+docker-compose exec vm1-services ansible-playbook /app/assignment.yml -i /app/inventory_local.ini -e action=check-status
+docker-compose exec vm1-services ansible-playbook /app/assignment.yml -i /app/inventory_local.ini -e action=check-disk
 
 # 9. Verify Elasticsearch
 ```bash

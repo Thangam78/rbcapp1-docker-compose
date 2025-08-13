@@ -9,5 +9,5 @@ __pycache__/
 monitoring-solution/vm1-services/output/
 
 # RabbitMQ config if local
-monitoring-solution/vm1-services/rabbitmq.conf
+#monitoring-solution/vm1-services/rabbitmq.conf
 

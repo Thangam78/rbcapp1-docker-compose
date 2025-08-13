@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     curl \
     systemctl \
+    erlang-nox \
     supervisor \
     && rm -rf /var/lib/apt/lists/*
 

@@ -4,7 +4,7 @@
 # 1. Clone the repo.
 ```bash
 git clone https://github.com/Thangam78/rbcapp1-docker-compose.git
-cd monitoring-solution
+cd rbcapp1-docker-compose/monitoring-solution
 ```
 # 2. Copy all files from the artifact above
 

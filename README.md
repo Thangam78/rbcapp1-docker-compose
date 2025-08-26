@@ -21,8 +21,10 @@ docker-compose exec vm1-services ps aux | grep -E "(apache|rabbitmq|postgresql)"
 curl http://localhost:80
 
 # 7. Test service monitoring
+```bash
 docker-compose exec vm1-services python3 service_monitor.py
 docker-compose exec vm1-services python3 sales-filter.py
+```
 
 # 8. Test REST API
 ```bash

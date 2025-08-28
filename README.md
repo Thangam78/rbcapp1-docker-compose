@@ -27,7 +27,7 @@ docker-compose exec vm1-services python3 service_monitor.py
 
 # 7. Test REST API
 ```bash
-curl -X POST http://localhost:5000/add -H "Content-Type: application/json" -d '{"service_name":"apache2","service_status":"UP","host_name":"vm1-host"}'
+curl -X POST http://localhost:5000/add -H "Content-Type: application/json" -d '{"service_name":"apache","service_status":"UP","host_name":"vm1-host"}'
 curl http://localhost:5000/healthcheck
 curl http://localhost:5000/healthcheck/apache
 curl http://localhost:5000/healthcheck/postgresql
